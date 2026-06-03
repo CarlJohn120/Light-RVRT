@@ -1,0 +1,49 @@
+{
+  "task": "TEST_CDNET",
+  "model": "plain",
+  "gpu_ids": [0],
+  "dist": false,
+  "n_channels": 3,
+  "scale": 1,
+  "path": {
+    "root": "output",
+    "pretrained_netG": "output/DEBUG_CDNET/models/588490_G.pth"
+  },
+  "train": {},
+  "datasets": {
+    "test": {
+      "name": "test_dataset",
+      "dataset_type": "video_test",
+      "dataroot_gt": "Thesis_Data_Local/Train_Selected/GT",
+      "dataroot_lq": "Thesis_Data_Local/Train_Selected/LQ_ROI",
+      "dataroot_mask": "Thesis_Data_Local/Train_Selected/Mask",
+      "num_frame": 6,
+      "test_frame_step": 1,
+      "cache_data": false
+    }
+  },
+  "netG": {
+    "net_type": "rvrt",
+    "scale": 1,
+    "num_in_ch": 3,
+    "num_out_ch": 3,
+    "embed_dim": 96,
+    "embed_dims": [96, 96, 96],
+    "inputconv_groups": [1, 1, 1, 1, 1, 1],
+    "num_heads": [6, 6, 6],
+    "deformable_groups": 12,
+    "attention_heads": 12,
+    "attention_window": [3, 3],
+    "window_size": [1, 3, 3],
+    "depth": [2, 2, 2],
+    "depths": [2, 2, 2],
+    "num_blocks": [2, 2, 2],
+    "img_size": [6, 256, 256],
+    "num_clips": 1,
+    "clip_size": 2,
+    "cpu_cache_length": 100,
+    "init_type": "default",
+    "no_checkpoint_attn_blocks": [],
+    "no_checkpoint_ffn_blocks": []
+  }
+}
